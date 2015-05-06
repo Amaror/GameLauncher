@@ -1,18 +1,23 @@
-package data.tools.gamelist;
+package data.tools.gamelistcontrol;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import data.materials.Game;
-
-public class GameListUI {
+public class GameListControlUI {
 	
-	//UI Elements
 	private JFrame Frame;
 	private JPanel GameListPanel;
 	private JPanel GameInformationPanel;
@@ -20,12 +25,12 @@ public class GameListUI {
 	private JLabel GameName;
 	private JButton GameStartButton;
 	//Data
-	private GameList GameListTool;
+	private GameListControl GameListControl;
 	private DefaultListModel ListModel;
 	
-	public GameListUI(GameList gamelistobject){
+	public GameListControlUI(GameListControl gamelistobject){
 		ListModel = new DefaultListModel<String>();
-		GameListTool = gamelistobject;
+		GameListControl = gamelistobject;
 		Frame = new JFrame("Game Launcher");
 		
 		//Setup Game List Panel
@@ -36,7 +41,7 @@ public class GameListUI {
 		GameList.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				GameListTool.SelectionChanged();
+				GameListControl.SelectionChanged();
 			}
 		});
 		JScrollPane listScroller = new JScrollPane(GameList);
@@ -50,7 +55,7 @@ public class GameListUI {
 		GameStartButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameListTool.ButtonPressed();
+				GameListControl.ButtonPressed();
 			}
 		});
 		GameInformationPanel.add(GameName, BorderLayout.NORTH);

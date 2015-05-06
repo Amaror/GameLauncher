@@ -1,18 +1,14 @@
 package data;
 
+import data.manager.GUIManager;
 import data.manager.GameManager;
-import data.materials.ApplicationParameters;
-import data.tools.gamelist.GameList;
 
 public class main {
 	
-	private static GameManager gamemanager = new GameManager();
-	private static GameList gamelist;
+	private static GUIManager guimanager;
 
 	public static void main(String[] args) {
-		gamemanager.SteamDir.add(ApplicationParameters.SteamDir + "/SteamApps");
-		gamemanager.loadSteamGames();
-		gamelist = new GameList(gamemanager);
+		guimanager = new GUIManager();
 	}
 
 }
